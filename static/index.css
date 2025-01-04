@@ -38,6 +38,7 @@ h1 {
     font-family: 'IBM Plex Mono', sans-serif; /* Font from reference */
     color: rgb(0, 225, 60); /* Green header color */
     letter-spacing: 2px;
+    background-color: black;
     text-transform: uppercase;
   }
   
