@@ -1,9 +1,12 @@
 h1 {
-    background-color: rgb(0, 0, 0); /* Matching the background color */
+
     color: rgb(255, 255, 255); /* Setting the text color */
     font-family: 'Rubik Doodle Triangles', sans-serif; /* Main font */
     margin: 0;
     padding: 0;
+    font-weight: normal;
+    font-size: 60px;
+
   }
   
   #header {
@@ -58,6 +61,7 @@ h1 {
     text-align: center;
     color: rgb(255, 255, 255);
     cursor: cell;
+    font-family: 'IBM Plex Mono', sans-serif;
   }
   
   a {
@@ -72,8 +76,9 @@ h1 {
   }
   
   .form__input::placeholder {
-    color: rgb(170, 170, 170);
+    color: rgb(0, 0, 0);
     text-align: center;
+    font-family: 'IBM Plex Mono', sans-serif;
   }
   
   .form__input:hover {
@@ -97,7 +102,7 @@ h1 {
     padding-top: 7.5px;
     padding-bottom: 10px;
     text-align: center;
-    color: rgb(0, 0, 0);
+    color: rgb(0, 255, 60);
     font-size: 14px;
   }
   
@@ -115,20 +120,20 @@ h1 {
     color: rgb(170, 170, 170);
   }
   body {
-    color: rgb(255, 255, 255);
+    color: rgb(0, 255, 60);
     margin-left: 0px;
     text-align: center;
     font-size: 75px;
     font-family: 'IBM Plex Mono';
-    background-color: rgb(0, 255, 60);
+    background-color: rgb(0, 0, 0);
   
   }
   h1 {
     font-family: Arial, Helvetica, sans-serif;
     background-color: rgb(0, 0, 0);
-    color: rgb(0, 0, 0);
+    color: rgb(255, 255, 255);
     text-align: center;
-    font-size: 25px;
+    font-size: 45px;
     font-family: 'Rubik Doodle Triangles';
   }
   
@@ -165,7 +170,7 @@ h1 {
     background-color: rgb(0, 0, 0);
     color: rgb(0, 225, 60);
     text-align: center;
-    font-size: 25px;
+    font-size: 15px;
     font-family: 'IBM Plex Mono';
   
     

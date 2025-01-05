@@ -18,9 +18,13 @@
       <div id="header">
          <img src="favicon-16x16.png" alt="ERROR NOT FOUND">
       </div>
+      <p></p>
+
       <div id="content">
          <h1>Search the web unhindered with UltraViolet!</h1>
-
+<p></p>
+<p> </p>
+         <h1></h1>
          <form id="uv-form"">
             <input id="uv-search-engine" value="https://www.google.com/search?q=%s" type="hidden"/> 
             <input id="uv-address" type="text" placeholder="Search Google or type a URL" class="form__input"/>
@@ -29,18 +33,16 @@
             <p id="uv-error"></p>
             <pre id="uv-error-code"></pre>
           </div>
-         <a href="https://discord.gg/zJhPJYJCeJ" target="_blank" class="fa-brands fa-discord"></a>
-         <a href="https://github.com/TheTIW/UV-Static" target="_blank"class="fa-brands fa-github"></a>
-         <a href="https://starttiw.org" target="_blank"class="fa-solid fa-cloud"></a>
+       
       </div>
       <script src="uv/uv.bundle.js" defer></script>
       <script src="uv/uv.config.js" defer></script>
       <script src="register-sw.js" defer></script>
       <script src="search.js" defer></script>
       <script src="index.js" defer></script>
-      
+      <script src="wordgen.js"></script>
       <div id="footer">
-         <p>*Angry node.js noises here*</p>
-      </div>
-   </body>
+         <div id="output"></div>
+</div>
+      </body>
 </html>
