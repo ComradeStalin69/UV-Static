@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Browser Command Execution</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #1e1e1e;
+      color: #dcdcdc;
+      padding: 20px;
+    }
+    .form__input {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #555;
+      background-color: #2e2e2e;
+      color: #dcdcdc;
+      margin-bottom: 10px;
+    }
+    .desc {
+      margin-top: 10px;
+    }
+    #uv-error {
+      color: #f77;
+    }
+    #uv-error-code {
+      color: #7af;
+    }
+  </style>
+</head>
+<body>
+  <form id="uv-form">
+    <input id="uv-search-engine" value="https://www.google.com/search?q=%s" type="hidden"/> 
+    <input id="uv-address" type="text" placeholder="Enter a command" class="form__input"/>
+  </form>
+  <div class="desc">
+    <p id="uv-error"></p>
+    <pre id="uv-error-code"></pre>
+  </div>
+  <script src="static/uv/uv.bundle.js" defer></script>
+  <script src="uv/uv.config.js" defer></script>
+  <script src="static/register-sw.js" defer></script>
+  <script src="static/search.js" defer></script>
+  <script src="static/index.js" defer></script>
+  <script src="static/wordgen.js"></script>
+  <script>
+    const commands = {
+      help: {
+        description: "List all available commands",
+        execute: () => {
+          return "Available commands:\n" +
+            Object.entries(commands)
+              .map(([cmd, { description }]) => `- ${cmd}: ${description}`)
+              .join("\n");
+        },
+      },
+      greet: {
+        description: "Greet a user. Usage: greet <name>",
+        execute: (args) => {
+          const name = args[0];
+          if (!name) return "Error: Please provide a name to greet.";
+          return `Hello, ${name}!`;
+        },
+      },
+      add: {
+        description: "Add two numbers. Usage: add <num1> <num2>",
+        execute: (args) => {
+          const [num1, num2] = args.map(Number);
+          if (isNaN(num1) || isNaN(num2)) return "Error: Both arguments must be numbers.";
+          return `Result: ${num1 + num2}`;
+        },
+      },
+      search: {
+        description: "Search using the specified search engine URL. Usage: search <query>",
+        execute: (args) => {
+          const query = args.join(" ");
+          if (!query) return "Error: Please provide a query to search.";
+          const searchUrl = document.getElementById("uv-search-engine").value.replace("%s", encodeURIComponent(query));
+          window.open(searchUrl, "_blank"); // Opens the search in a new tab
+          return `Searching for "${query}"...`;
+        },
+      },
+      clear: {
+        description: "Clear the output areas",
+        execute: () => {
+          document.getElementById("uv-error").textContent = "";
+          document.getElementById("uv-error-code").textContent = "";
+          return "Cleared output.";
+        },
+      },
+    };
+
+    document.getElementById("uv-form").addEventListener("submit", (e) => {
+      e.preventDefault(); // Prevent form submission reload
+      const input = document.getElementById("uv-address").value.trim();
+      document.getElementById("uv-address").value = ""; // Clear input field
+
+      if (!input) return;
+
+      const [command, ...args] = input.split(/\s+/);
+      const errorOutput = document.getElementById("uv-error");
+      const codeOutput = document.getElementById("uv-error-code");
+
+      if (!commands[command]) {
+        errorOutput.textContent = "Error: Invalid command. Type 'help' for a list of commands.";
+        codeOutput.textContent = "";
+        return;
+      }
+
+      const result = commands[command].execute(args);
+      errorOutput.textContent = "";
+      codeOutput.textContent = result;
+    });
+  </script>
+</body>
+</html>

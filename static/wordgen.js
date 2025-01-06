@@ -26,7 +26,7 @@
         'me opening the 5mb zip file',
       ];
 
-      
+
       var wordNum = Math.floor(Math.random() * theWord.length);
       
      
