@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Browser Command Execution</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #1e1e1e;
+      color: #dcdcdc;
+      padding: 20px;
+    }
+    .form__input {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #555;
+      background-color: #2e2e2e;
+      color: #dcdcdc;
+      margin-bottom: 10px;
+    }
+    .desc {
+      margin-top: 10px;
+    }
+    #uv-error {
+      color: #f77;
+    }
+    #uv-error-code {
+      color: #7af;
+    }
+  </style>
+</head>
+<body>
+  <form id="uv-form">
+    <input id="uv-search-engine" value="https://www.google.com/search?q=%s" type="hidden" />
+    <input id="uv-address" type="text" placeholder="Search Google or type a URL" class="form__input" />
+</form>
+<div class="desc left-margin">
+    <p id="uv-error"></p>
+    <pre id="uv-error-code"></pre>
+</div>
+
+<!-- CLI Interface -->
+<div id="cli-container">
+    <div id="cli-output"></div>
+    <div id="cli-input-container">
+        <span>&gt;</span>
+        <input id="cli-input" type="text" placeholder="Enter command..." />
+    </div>
+</div>
+
+<script src="uv/uv.bundle.js" defer></script>
+<script src="uv/uv.config.js" defer></script>
+<script src="register-sw.js" defer></script>
+<script src="search.js" defer></script>
+<script src="index.js" defer></script>
+<script src="cli.js" defer></script>
+  </script>
+</body>
+</html>
