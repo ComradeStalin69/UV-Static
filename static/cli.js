@@ -41,19 +41,32 @@ document.addEventListener("DOMContentLoaded", () => {
                 uvAddress.value = `https://www.google.com/search?q=${encodeURIComponent(query)}`;
                 uvForm.dispatchEvent(new Event("submit"));
                 window.location.href = `uv/service/${url.startsWith("http") ? url : `http://${url}`}`;
+                appendCliOutput(`If you get a typerror then reload the page you are directed to`)
             case "open":
                 const url = args.join(" ");
                 appendCliOutput(`Opening URL: ${url}`);
                 uvAddress.value = url.startsWith("http") ? url : `http://${url}`;
                 uvForm.dispatchEvent(new Event("submit"));
                 window.location.href = `uv/service/${url.startsWith("http") ? url : `http://${url}`}`;
+                appendCliOutput(`If you get a typerror then reload the page you are directed to`)
 
                 break;
 
-            case "help":
-                appendCliOutput("Commands:\n- search <query>\n- open <url>\n- help");
-                break;
-
+                case "calc":
+                    const expression = args.join(" ");
+                    try {
+                        // Evaluate the mathematical expression
+                        const result = eval(expression);
+                        appendCliOutput(`Result: ${result}`);
+                    } catch (error) {
+                        appendCliOutput(`Error: Invalid expression "${expression}"`);
+                    }
+                    break;
+    
+                case "help":
+                    appendCliOutput("Commands:\n- search <query>\n- open <url>\n- calc <expression>\n- help");
+                    break;
+    
             default:
                 appendCliOutput(`Unknown command: ${cmd}`);
                 appendCliOutput("Type 'help' for available commands.");
