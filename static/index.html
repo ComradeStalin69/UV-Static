@@ -1,48 +1,95 @@
 <!DOCTYPE html>
-<html>
-   <head>
-      <meta name="viewport" content="width=device-width, initial-scale=1">
-      <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
-      <link rel="stylesheet" href="index.css">
-      <script type="text/javascript" src="logo.gif"></script>
-      <link rel="shortcut icon" type="image/jpg" href="~/favicon.ico"/>
-      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-      <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
-      <link href="https://fonts.googleapis.com/css2?family=Oswald&display=swap" rel="stylesheet">
-      <link href='https://fonts.googleapis.com/css?family=Rubik Doodle Triangles' rel='stylesheet'>
-      <link href='https://fonts.googleapis.com/css?family=Rubik Glitch' rel='stylesheet'>
-      <link href='https://fonts.googleapis.com/css?family=IBM Plex Mono' rel='stylesheet'>
-      <link href='https://fonts.googleapis.com/css?family=Rubik Pixels' rel='stylesheet'>
-   </head>
-   <body>
-      <div id="header">
-         <img src="favicon-16x16.png" alt="ERROR NOT FOUND">
-      </div>
-      <p></p>
+<html lang="en">
+<head>
+  <link href='https://fonts.googleapis.com/css?family=IBM Plex Mono' rel='stylesheet'>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Browser Command Execution</title>
+  <style>
+    body {
+    background-color: black; /* Set the page background color */
+    color: rgb(0, 255, 60); /* Set the text color for the page */
+    font-family: 'IBM Plex Mono';
+    margin: 10px;
+    padding: 0;
+    font-size: 16px;
+}
 
-      <div id="content">
-         <h1>Search the web unhindered with UltraViolet!</h1>
-<p></p>
-<p> </p>
-         <h1></h1>
-         <form id="uv-form"">
-            <input id="uv-search-engine" value="https://www.google.com/search?q=%s" type="hidden"/> 
-            <input id="uv-address" type="text" placeholder="Search Google or type a URL" class="form__input"/>
-          </form>
-          <div class="desc left-margin">
-            <p id="uv-error"></p>
-            <pre id="uv-error-code"></pre>
-          </div>
-       
-      </div>
-      <script src="uv/uv.bundle.js" defer></script>
-      <script src="uv/uv.config.js" defer></script>
-      <script src="register-sw.js" defer></script>
-      <script src="search.js" defer></script>
-      <script src="index.js" defer></script>
-      <script src="wordgen.js"></script>
-      <div id="footer">
-         <marquee id="output"></marquee>
+#cli-input-container {
+    display: flex;
+    align-items: center;
+    font-family:'IBM Plex Mono';
+    font-size: 16px;
+    color: rgb(0,255,60);
+    background-color: black; /* Match page background */
+    padding: 1px;
+    border: none; /* Remove border around the container */
+    width: 100%;
+    max-width: 600px; /* Optional: Limit container width */
+    margin: 15px; /* Center the container */
+}
+
+#cli-input-container span {
+    margin-right: 5px; /* Space between the prompt and the cursor */
+    margin: 5px;
+}
+
+#cli-input {
+  font-family: 'IBM Plex Mono';
+  margin: 5px;
+  font-size: 16px;
+    border: none; /* Remove the input border */
+    outline: none; /* Remove the input outline */
+    background: none; /* Remove the input background */
+    color: rgb(0, 255, 60); /* Hide the text */
+    caret-color: white; /* Hide the caret */
+    width: 100%; /* Take up full width for usability */
+    
+}
+
+#cli-input::before {
+    content: ""; /* Placeholder for blinking cursor */
+    display: inline-block;
+    width: 10px;
+    height: 1.2em;
+    background-color: white; /* Color of the blinking cursor */
+    animation: blink 1s step-start infinite; /* Blinking effect */
+}
+div {margin: 10px;
+  font-size: 16px;}
+
+/* Blinking animation */
+@keyframes blink {
+    50% {
+        opacity: 0;
+    }
+}
+  </style>
+</head>
+<body>
+<form id="uv-form">
+    <input id="uv-search-engine" value="https://www.google.com/search?q=%s" type="hidden" />
+    <input id="uv-address" type="hidden" placeholder="Search Google or type a URL" class="form__input" />
+</form>
+<div class="desc left-margin">
+    <p id="uv-error"></p>
+    <pre id="uv-error-code"></pre>
 </div>
-      </body>
+
+<!-- CLI Interface -->
+<div id="cli-container">
+    <div id="cli-output"></div>
+    <div id="cli-input-container">
+        <span>&gt;</span>
+        <input id="cli-input" type="text" placeholder="Enter command..." />
+    </div>
+</div>
+<script src="uv/uv.bundle.js" defer></script>
+<script src="uv/uv.config.js" defer></script>
+<script src="register-sw.js" defer></script>
+<script src="search.js" defer></script>
+<script src="index.js" defer></script>
+<script src="cli.js" defer></script>
+  </script>
+</body>
 </html>
