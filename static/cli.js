@@ -46,6 +46,8 @@ document.addEventListener("DOMContentLoaded", () => {
                 appendCliOutput(`Opening URL: ${url}`);
                 uvAddress.value = url.startsWith("http") ? url : `http://${url}`;
                 uvForm.dispatchEvent(new Event("submit"));
+                window.location.href = `uv/service/${url.startsWith("http") ? url : `http://${url}`}`;
+
                 break;
 
             case "help":
