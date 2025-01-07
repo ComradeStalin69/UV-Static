@@ -14,8 +14,8 @@
     input {
       width: 100%;
       padding: 10px;
-      border: 0px solid #555;
-      background-color: #1e1e1e;
+      border: 1px solid #555;
+      background-color: #2e2e2e;
       color: #dcdcdc;
       margin-bottom: 10px;
     }
@@ -28,6 +28,47 @@
     #uv-error-code {
       color: #7af;
     }
+    #cli-input-container {
+    display: flex;
+    align-items: center;
+    font-family: monospace;
+    font-size: 16px;
+    color: white;
+    background-color: black;
+    padding: 10px;
+    border: 1px solid #333;
+    width: 400px;
+}
+
+#cli-input-container span {
+    margin-right: 5px;
+}
+
+input {
+    border: none;
+    outline: none;
+    background: none;
+    color: transparent; /* Hide the text */
+    caret-color: transparent; /* Hide the caret */
+    width: 100%; /* Allow typing */
+    position: relative;
+}
+
+input::before {
+    content: ""; /* Placeholder for blinking cursor */
+    display: inline-block;
+    width: 10px;
+    height: 1.2em;
+    background-color: white;
+    animation: blink 1s step-start infinite; /* Blinking effect */
+}
+
+/* Blinking animation */
+@keyframes blink {
+    50% {
+        opacity: 0;
+    }
+}
   </style>
 </head>
 <body>
