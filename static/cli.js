@@ -10,6 +10,19 @@ document.addEventListener("DOMContentLoaded", () => {
         return;
     }
 
+    // Prevent the form from reloading the page
+    uvForm.addEventListener("submit", (event) => {
+        event.preventDefault();
+        const url = uvAddress.value.trim();
+        if (url) {
+            appendCliOutput(`Navigating to: ${url}`);
+            // Use UV's functionality to handle the URL
+            window.location.href = `uv/service/${url.startsWith("http") ? url : `http://${url}`}`;
+        } else {
+            appendCliOutput("Error: No URL entered.");
+        }
+    });
+
     // Append output to CLI
     function appendCliOutput(text) {
         const line = document.createElement("div");
@@ -26,14 +39,14 @@ document.addEventListener("DOMContentLoaded", () => {
                 const query = args.join(" ");
                 appendCliOutput(`Searching for: ${query}`);
                 uvAddress.value = `https://www.google.com/search?q=${encodeURIComponent(query)}`;
-                uvForm.submit();
+                uvForm.dispatchEvent(new Event("submit"));
                 break;
 
             case "open":
                 const url = args.join(" ");
                 appendCliOutput(`Opening URL: ${url}`);
                 uvAddress.value = url.startsWith("http") ? url : `http://${url}`;
-                uvForm.submit();
+                uvForm.dispatchEvent(new Event("submit"));
                 break;
 
             case "help":
