@@ -40,8 +40,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 appendCliOutput(`Searching for: ${query}`);
                 uvAddress.value = `https://www.google.com/search?q=${encodeURIComponent(query)}`;
                 uvForm.dispatchEvent(new Event("submit"));
-                break;
-
+                window.location.href = `uv/service/${url.startsWith("http") ? url : `http://${url}`}`;
             case "open":
                 const url = args.join(" ");
                 appendCliOutput(`Opening URL: ${url}`);
