@@ -11,7 +11,7 @@
       color: #dcdcdc;
       padding: 20px;
     }
-    input {
+    .form__input {
       width: 100%;
       padding: 10px;
       border: 1px solid #555;
@@ -28,51 +28,10 @@
     #uv-error-code {
       color: #7af;
     }
-    #cli-input-container {
-    display: flex;
-    align-items: center;
-    font-family: monospace;
-    font-size: 16px;
-    color: white;
-    background-color: black;
-    padding: 10px;
-    border: 1px solid #333;
-    width: 400px;
-}
-
-#cli-input-container span {
-    margin-right: 5px;
-}
-
-input {
-    border: none;
-    outline: none;
-    background: none;
-    color: transparent; /* Hide the text */
-    caret-color: transparent; /* Hide the caret */
-    width: 100%; /* Allow typing */
-    position: relative;
-}
-
-input::before {
-    content: ""; /* Placeholder for blinking cursor */
-    display: inline-block;
-    width: 10px;
-    height: 1.2em;
-    background-color: white;
-    animation: blink 1s step-start infinite; /* Blinking effect */
-}
-
-/* Blinking animation */
-@keyframes blink {
-    50% {
-        opacity: 0;
-    }
-}
   </style>
 </head>
 <body>
-  <form id="uv-form">
+<form id="uv-form">
     <input id="uv-search-engine" value="https://www.google.com/search?q=%s" type="hidden" />
     <input id="uv-address" type="text" placeholder="Search Google or type a URL" class="form__input" />
 </form>
