@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CLI with Unified Output</title>
+    <title>CLI with UV Proxy</title>
     <style>
         body {
             background-color: black;
@@ -53,6 +53,10 @@
             margin-top: 10px;
         }
     </style>
+    <script src="uv/uv.bundle.js"></script>
+    <script src="uv/uv.config.js"></script>
+    <script src="uv\uv.handler.js"></script>
+    <script src="uv\uv.sw.js"></script>
 </head>
 <body>
     <div id="cli-container">
@@ -62,6 +66,6 @@
             <input id="cli-input" type="text" placeholder="Enter command..." />
         </div>
     </div>
-    <script src="cli.js"></script>
+    <script src="app.js"></script>
 </body>
 </html>
