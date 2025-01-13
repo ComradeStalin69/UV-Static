@@ -15,7 +15,7 @@ document.addEventListener("DOMContentLoaded", () => {
         const line = document.createElement("div");
         line.textContent = text;
         cliOutput.appendChild(line);
-        cliOutput.scrollTop = cliOutput.scrollHeight;
+        cliOutput.scrollTop = cliOutput.scrollHeight; // Auto-scroll to the bottom
     }
 
     // Create a new iframe

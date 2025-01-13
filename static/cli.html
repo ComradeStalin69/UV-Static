@@ -1,92 +1,71 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <link href='https://fonts.googleapis.com/css?family=IBM Plex Mono' rel='stylesheet'>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Browser Command Execution</title>
-  <style>
-    body {
-    background-color: black; /* Set the page background color */
-    color: rgb(0, 255, 60); /* Set the text color for the page */
-    font-family: 'IBM Plex Mono';
-    margin: 10px;
-    padding: 0;
-    font-size: 16px;
-}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CLI with Dynamic IFrames</title>
+    <style>
+        body {
+            background-color: black;
+            color: white;
+            font-family: monospace;
+            margin: 0;
+            padding: 0;
+        }
 
-#cli-input-container {
-    display: flex;
-    align-items: center;
-    font-family:'IBM Plex Mono';
-    font-size: 16px;
-    color: rgb(0,255,60);
-    background-color: black; /* Match page background */
-    padding: 1px;
-    border: none; /* Remove border around the container */
-    width: 100%;
-    max-width: 600px; /* Optional: Limit container width */
-    margin: 15px; /* Center the container */
-}
+        #cli-container {
+            padding: 20px;
+        }
 
-#cli-input-container span {
-    margin-right: 5px; /* Space between the prompt and the cursor */
-    margin: 5px;
-}
+        #cli-output {
+            background-color: #222;
+            color: #0f0;
+            padding: 10px;
+            height: 150px;
+            overflow-y: auto;
+            border-radius: 5px;
+            margin-bottom: 10px;
+        }
 
-#cli-input {
-  font-family: 'IBM Plex Mono';
-  margin: 5px;
-  font-size: 16px;
-    border: none; /* Remove the input border */
-    outline: none; /* Remove the input outline */
-    background: none; /* Remove the input background */
-    color: rgb(0, 255, 60); /* Hide the text */
-    caret-color: white; /* Hide the caret */
-    width: 100%; /* Take up full width for usability */
-    
-}
+        #cli-input-container {
+            display: flex;
+            align-items: center;
+        }
 
-#cli-input::before {
-    content: ""; /* Placeholder for blinking cursor */
-    display: inline-block;
-    width: 10px;
-    height: 1.2em;
-    background-color: white; /* Color of the blinking cursor */
-    animation: blink 1s step-start infinite; /* Blinking effect */
-}
-div {margin: 10px;
-  font-size: 16px;}
+        #cli-input-container span {
+            margin-right: 5px;
+        }
 
-/* Blinking animation */
-@keyframes blink {
-    50% {
-        opacity: 0;
-    }
-}
-  </style>
+        #cli-input {
+            border: none;
+            outline: none;
+            background-color: #222;
+            color: #0f0;
+            padding: 5px;
+            flex: 1;
+            border-radius: 5px;
+        }
+
+        #iframe-container {
+            margin-top: 20px;
+        }
+
+        iframe {
+            margin-bottom: 20px;
+        }
+    </style>
 </head>
 <body>
-<form id="uv-form">
-    <input id="uv-search-engine" value="https://www.google.com/search?q=%s" type="hidden" />
-    <input id="uv-address" type="hidden" placeholder="Search Google or type a URL" class="form__input" />
-</form>
-<div id="cli-container">
-  <div id="cli-output"></div>
-  <div id="cli-input-container">
-      <span>&gt;</span>
-      <input id="cli-input" type="text" placeholder="Enter command..." />
-  </div>
-</div>
+    <div id="cli-container">
+        <div id="cli-output"></div>
+        <div id="cli-input-container">
+            <span>&gt;</span>
+            <input id="cli-input" type="text" placeholder="Enter command..." />
+        </div>
+    </div>
 
-<!-- Dynamic IFrame Container -->
-<div id="iframe-container"></div>
-<script src="uv/uv.bundle.js" defer></script>
-<script src="uv/uv.config.js" defer></script>
-<script src="register-sw.js" defer></script>
-<script src="search.js" defer></script>
-<script src="index.js" defer></script>
-<script src="cli.js" defer></script>
-  </script>
+    <div id="iframe-container"></div>
+
+    <script src="cli.js"></script>
 </body>
 </html>
