@@ -1,24 +1,10 @@
 document.addEventListener("DOMContentLoaded", () => {
-    // UV proxy configuration (adjust this to match your UV setup)
-    const UV_PROXY_PREFIX = "/uv/service/";
+    // UV Proxy Configuration
+    const UV_PROXY_PREFIX = "/static/tiw/";
 
     // DOM Elements
     const cliOutput = document.getElementById("cli-output");
     const cliInput = document.getElementById("cli-input");
-
-    // Ensure DOM elements exist
-    if (!cliOutput || !cliInput) {
-        console.error("Required DOM elements are missing. Ensure all IDs are correct.");
-        return;
-    }
-
-    // Function to route URLs through the UV proxy
-    function routeThroughUV(url) {
-        // Ensure the URL is valid and fully qualified
-        const fullUrl = url.startsWith("http") ? url : `http://${url}`;
-        // Prepend the UV proxy prefix
-        return `${UV_PROXY_PREFIX}${encodeURIComponent(fullUrl)}`;
-    }
 
     // Append content to CLI output (text or iframe)
     function appendCliContent(content, isIframe = false) {
@@ -28,6 +14,9 @@ document.addEventListener("DOMContentLoaded", () => {
             // Add an iframe for displaying web content
             const iframe = document.createElement("iframe");
             iframe.src = content;
+            iframe.style.width = "100%";
+            iframe.style.height = "300px";
+            iframe.style.border = "none";
             container.appendChild(iframe);
         } else {
             // Add a text line to the CLI output
@@ -37,6 +26,14 @@ document.addEventListener("DOMContentLoaded", () => {
 
         cliOutput.appendChild(container);
         cliOutput.scrollTop = cliOutput.scrollHeight; // Auto-scroll to the bottom
+    }
+
+    // Route URLs through the UV proxy
+    function routeThroughUV(url) {
+        // Ensure the URL is fully qualified
+        const fullUrl = url.startsWith("http") ? url : `http://${url}`;
+        // Route through the UV proxy
+        return `${UV_PROXY_PREFIX}${Ultraviolet.codec.xor.encode(fullUrl)}`;
     }
 
     // Process CLI Commands
