@@ -49,7 +49,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 appendCliOutput(`Searching for: ${query}`);
                 uvAddress.value = `https://www.google.com/search?q=${encodeURIComponent(query)}`;
                 uvForm.dispatchEvent(new Event("submit"));
-                window.location.href = `uv/service/${url.startsWith("http") ? url : `http://${url}`}`;
+                //window.location.href = `uv/service/${url.startsWith("http") ? url : `http://${url}`}`;
                 appendCliOutput(`If you get a typerror then reload the page you are directed to`)
                 const srcses=`uv/service/${url.startsWith("http") ? url : `http://${url}`}`
                 CliOutputiframe(srcses);
