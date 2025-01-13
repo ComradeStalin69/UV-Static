@@ -32,8 +32,12 @@ document.addEventListener("DOMContentLoaded", () => {
     function routeThroughUV(url) {
         // Ensure the URL is fully qualified
         const fullUrl = url.startsWith("http") ? url : `http://${url}`;
-        // Route through the UV proxy
-        return `${UV_PROXY_PREFIX}${Ultraviolet.codec.xor.encode(fullUrl)}`;
+
+        // Encode the URL using Ultraviolet's encoding method
+        const encodedUrl = Ultraviolet.codec.xor.encode(fullUrl);
+
+        // Return the fully proxied URL
+        return `${UV_PROXY_PREFIX}${encodedUrl}`;
     }
 
     // Process CLI Commands
@@ -56,7 +60,6 @@ document.addEventListener("DOMContentLoaded", () => {
             case "calc":
                 const expression = args.join(" ");
                 try {
-                    // Evaluate the mathematical expression
                     const result = eval(expression);
                     appendCliContent(`Result: ${result}`);
                 } catch (error) {
