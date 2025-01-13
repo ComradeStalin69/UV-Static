@@ -42,6 +42,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 uvForm.dispatchEvent(new Event("submit"));
                 window.location.href = `uv/service/${url.startsWith("http") ? url : `http://${url}`}`;
                 appendCliOutput(`If you get a typerror then reload the page you are directed to`)
+                appendCliOutput(<iframe src='404.html'></iframe>)
             case "open":
                 const url = args.join(" ");
                 appendCliOutput(`Opening URL: ${url}`);
