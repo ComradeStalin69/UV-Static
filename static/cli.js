@@ -48,7 +48,7 @@ document.addEventListener("DOMContentLoaded", () => {
         const [cmd, ...args] = command.split(" ");
         switch (cmd) {
             case "iframe":
-                url = args.join(" ");
+                const url = args.join(" ");
                 appendCliContent(`Opening URL: ${url}`);
                 appendCliContent(routeThroughUV(url), true);
                 appendCliContent(url, true);
@@ -69,7 +69,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 break;
 
             case "open":
-                const url = args.join(" ");
+                url = args.join(" ");
                 appendCliContent(`Opening URL: ${url}`);
                 appendCliContent(routeThroughUV(url), true);
                 break;
