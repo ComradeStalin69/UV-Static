@@ -47,6 +47,8 @@ document.addEventListener("DOMContentLoaded", () => {
     function processCliCommand(command) {
         const [cmd, ...args] = command.split(" ");
         switch (cmd) {
+            case "tor":
+                appendCliContent(`Opening TOR: ${'http://torry.io'}`);
             case "google":
                 query = args.join(" ");
                 appendCliContent(`Searching for: ${query}`);
