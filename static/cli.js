@@ -17,7 +17,9 @@ document.addEventListener("DOMContentLoaded", () => {
             iframe.style.width = "50%";
             iframe.style.height = "500px";
             iframe.style.border = "none";
-            iframe.style.zoom = "50%"
+            iframe.style.zoom = "50%";
+            iframe.style.resize = "both";
+            iframe.style.overflow = "auto";
             container.appendChild(iframe);
         } else {
             // Add a text line to the CLI output
