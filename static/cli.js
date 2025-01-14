@@ -74,7 +74,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 break;
 
             case "help":
-                appendCliContent("Commands:\n- search <query>\n- google <query> \n- open <url>\n- calc <expression>\n- help");
+                appendCliContent("Commands:\n- search <query>\n- google <query> \n- open <http://url>\n- calc <expression>\n- help");
                 break;
 
             default:
