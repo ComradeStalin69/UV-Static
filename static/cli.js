@@ -14,8 +14,8 @@ document.addEventListener("DOMContentLoaded", () => {
             // Add an iframe for displaying web content
             const iframe = document.createElement("iframe");
             iframe.src = content;
-            iframe.style.width = "100%";
-            iframe.style.height = "900px";
+            iframe.style.width = "auto";
+            iframe.style.height = "auto";
             iframe.style.border = "none";
             container.appendChild(iframe);
         } else {
