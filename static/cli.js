@@ -14,9 +14,10 @@ document.addEventListener("DOMContentLoaded", () => {
             // Add an iframe for displaying web content
             const iframe = document.createElement("iframe");
             iframe.src = content;
-            iframe.style.width = "auto";
-            iframe.style.height = "auto";
+            iframe.style.width = "50%";
+            iframe.style.height = "500px";
             iframe.style.border = "none";
+            iframe.style.zoom = "50%"
             container.appendChild(iframe);
         } else {
             // Add a text line to the CLI output
