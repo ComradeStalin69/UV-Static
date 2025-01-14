@@ -47,8 +47,10 @@ document.addEventListener("DOMContentLoaded", () => {
             case "search":
                 const query = args.join(" ");
                 appendCliContent(`Searching for: ${query}`);
-                const searchUrl = `https://www.google.com/search?q=${encodeURIComponent(query)}`;
-                appendCliContent(routeThroughUV(searchUrl), true);
+                //const searchUrl = `https://www.google.com/search?q=${encodeURIComponent(query)}`;
+                //appendCliContent(routeThroughUV(searchUrl), true);
+                appendCliContent(`Opening URL: ${"google.com"}`);
+                appendCliContent(routeThroughUV('google.com'), true);
                 break;
 
             case "open":
