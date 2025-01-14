@@ -49,7 +49,7 @@ document.addEventListener("DOMContentLoaded", () => {
         switch (cmd) {
             case "tor":
                 appendCliContent(`Opening TOR: ${'http://torry.io'}`);
-                appendCliContent('http://torry.io', true)
+                appendCliContent('https://torry.io', true)
             case "google":
                 query = args.join(" ");
                 appendCliContent(`Searching for: ${query}`);
