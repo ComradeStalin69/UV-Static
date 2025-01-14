@@ -44,13 +44,17 @@ document.addEventListener("DOMContentLoaded", () => {
     function processCliCommand(command) {
         const [cmd, ...args] = command.split(" ");
         switch (cmd) {
+            case "google":
+                query = args.join(" ");
+                appendCliContent(`Searching for: ${query}`);
+                searchUrl = `https://www.google.com/search?q=${encodeURIComponent(query)}`;
+                appendCliContent(routeThroughUV(searchUrl), true);
+                break;
             case "search":
                 const query = args.join(" ");
                 appendCliContent(`Searching for: ${query}`);
-                //const searchUrl = `https://www.google.com/search?q=${encodeURIComponent(query)}`;
-                //appendCliContent(routeThroughUV(searchUrl), true);
-                appendCliContent(`Opening URL: ${"google.com"}`);
-                appendCliContent(routeThroughUV('google.com'), true);
+                const searchUrl = `https://www.google.com/search?q=${encodeURIComponent(query)}`;
+                appendCliContent(routeThroughUV(searchUrl), true);
                 break;
 
             case "open":
@@ -70,7 +74,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 break;
 
             case "help":
-                appendCliContent("Commands:\n- search <query>\n- open <url>\n- calc <expression>\n- help");
+                appendCliContent("Commands:\n- search <query>\n- google <query> \n- open <url>\n- calc <expression>\n- help");
                 break;
 
             default:
