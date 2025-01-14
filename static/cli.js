@@ -48,6 +48,9 @@ document.addEventListener("DOMContentLoaded", () => {
         const [cmd, ...args] = command.split(" ");
         switch (cmd) {
             case "iframe":
+                url = args.join(" ");
+                appendCliContent(`Opening URL: ${url}`);
+                appendCliContent(routeThroughUV(url), true);
                 appendCliContent(url, true);
             case "tor":
                 appendCliContent(`Opening TOR: ${'http://torry.io'}`);
