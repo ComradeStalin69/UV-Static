@@ -62,6 +62,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 appendCliContent(routeThroughUV(searchUrl), true);
                 break;
             case "search":
+                
                 const query = args.join(" ");
                 appendCliContent(`Searching for: ${query}`);
                 const searchUrl = `https://www.google.com/search?q=${encodeURIComponent(query)}`;
@@ -71,7 +72,7 @@ document.addEventListener("DOMContentLoaded", () => {
             case "open":
                 url = args.join(" ");
                 appendCliContent(`Opening URL: ${url}`);
-                appendCliContent(routeThroughUV(url), true);
+                window.location(routeThroughUV(url), true);
                 break;
 
             case "calc":
