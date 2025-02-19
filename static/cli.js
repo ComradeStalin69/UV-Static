@@ -51,10 +51,10 @@ document.addEventListener("DOMContentLoaded", () => {
                 const url = args.join(" ");
                 appendCliContent(`Opening URL: ${url}`);
                 appendCliContent(routeThroughUV(url), true);
-                appendCliContent(url, true);
+                
             case "tor":
-                appendCliContent(`Opening TOR: ${'http://torry.io'}`);
-                appendCliContent(routeThroughUV('http://torry.io'), true)
+                //appendCliContent(`Opening TOR: ${'http://torry.io'}`);
+                //appendCliContent(routeThroughUV('http://torry.io'), true)
             case "google":
                 query = args.join(" ");
                 appendCliContent(`Searching for: ${query}`);
