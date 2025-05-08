@@ -42,6 +42,16 @@ document.addEventListener("DOMContentLoaded", () => {
         // Return the fully proxied URL
         return `${UV_PROXY_PREFIX}${encodedUrl}`;
     }
+   // function goToURL(url) {
+        // Ensure the URL is fully qualified
+       // const rul = url.startsWith("http") ? url : `http://${url}`;
+
+        // Encode the URL using Ultraviolet's encoding method
+       // const codedUrl = Ultraviolet.codec.xor.encode(rul);
+    //   window.location.href="google.com"
+        // Return the fully proxied URL
+       // window.location.href= `${UV_PROXY_PREFIX}${codedUrl}`;
+  //  }
 
     // Process CLI Commands
     function processCliCommand(command) {
@@ -73,7 +83,7 @@ document.addEventListener("DOMContentLoaded", () => {
             case "open":
                 url = args.join(" ");
                 appendCliContent(`Opening URL: ${url}`);
-                window.location(routeThroughUV(url), true);
+                window.location.href=routeThroughUV(url);
                 break;
 
             case "calc":
@@ -85,14 +95,28 @@ document.addEventListener("DOMContentLoaded", () => {
                     appendCliContent(`Error: Invalid expression "${expression}"`);
                 }
                 break;
+            case "eaglercraft":
+                const version = args.join(" ");
+                if (version=='1.8.8 WASM'){
+                    window.location.href="Villade-main/1.8.8-wasm/index.html"
+                } else if(version=='1.8.8'){
+                    window.location.href='Villade-main/1.8.8/index.html'
+                } else if(version=='1.12.2'){
+                    window.location.href='Villade-main/1.12.2/index.html'
+                } else if(version=='1.12.2 WASM'){
+                    window.location.href='Villade-main/1.12.2-wasm/index.html'
+                } else {
+                    appendCliContent("Versions: 1.8.8, 1.8.8 WASM, 1.12.2, 1.12.2 WASM")
+                }
 
             case "help":
-                appendCliContent("Commands:\n- search <query>\n- google <query> \n- open <http://url>\n- calc <expression>\n- help");
+                appendCliContent("Commands:\n- search <query>\n- google <query> \n- open <http://url>\n- calc <expression>\n- help \n- eaglercraft <version>");
                 break;
 
             default:
                 appendCliContent(`Unknown command: ${cmd}`);
                 appendCliContent("Type 'help' for available commands.");
+            
         }
     }
 
