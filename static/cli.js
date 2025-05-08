@@ -105,8 +105,11 @@ document.addEventListener("DOMContentLoaded", () => {
                     window.location.href='Villade-main/1.12.2/index.html'
                 } else if(version=='1.12.2 WASM'){
                     window.location.href='Villade-main/1.12.2-wasm/index.html'
-                } else {
-                    appendCliContent("Versions: 1.8.8, 1.8.8 WASM, 1.12.2, 1.12.2 WASM")
+                } else if(version == '1.21') {
+                    window.location.href="Villade-main/Eaglercraft-1.21.1-TeaVM-main/index.html"
+                }
+                  else {
+                    appendCliContent("Versions: 1.8.8, 1.8.8 WASM, 1.12.2, 1.12.2 WASM, 1.21")
                 }
 
             case "help":
